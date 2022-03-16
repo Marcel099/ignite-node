@@ -42,13 +42,13 @@ export class ImportCategoryUseCase {
   async execute(file: Express.Multer.File) {
     const categories = await this.loadCategories(file);
 
-    categories.forEach((category) => {
+    categories.forEach(async (category) => {
       const { name, description } = category;
 
-      const foundCategory = this.categoriesRepository.findByName(name);
+      const foundCategory = await this.categoriesRepository.findByName(name);
 
       if (!foundCategory) {
-        this.categoriesRepository.create({ name, description });
+        await this.categoriesRepository.create({ name, description });
       }
     });
   }
