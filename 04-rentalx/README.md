@@ -1,9 +1,11 @@
 # RentalX API
 
 ## Índice
+
 <!-- ts -->
    * [Índice](#índice)
    * [Sobre o projeto](#sobre-o-projeto)
+   * [Como rodar na sua máquina?](#como-rodar-na-sua-máquina)
    * [Modelo Entidade-Relacionamento](#modelo-entidade-relacionamento)
    * [Requisitos e Regras de Negócio](#requisitos-e-regras-de-negócio)
       * [Cadastro de carro](#cadastro-de-carro)
@@ -33,6 +35,10 @@ Dentre as ferramentas utrilizadas, podemos destacar:
 - TypeORM
 - JWT
 - Jest
+
+## Como rodar na sua máquina?
+
+🚧 Em construção...  🚧
 
 ## Modelo Entidade-Relacionamento
 
