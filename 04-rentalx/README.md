@@ -15,9 +15,9 @@
 
 ## Sobre o projeto
 
-Este projeto é uma API REST de um serviço de aluguel de carros simplificado.
+Este projeto é uma API REST de um serviço de aluguel de carros.
 
-Foi desenvolvido durante a trilha Node do programa Ignite da RocketSeat. É também o principal projeto desta trilha: Iniciou-se no capítulo 2 e foi trabalhado até o capítulo 6, o qual é o final da trilha.
+Foi desenvolvido durante a trilha Node do programa Ignite da RocketSeat. É também o principal projeto desta trilha: teve seu início no capítulo 2 e foi continuamente trabalhado até o capítulo 6, o qual é o final da trilha.
 
 Abrange conceitos diversos utilizados em aplicações Back-End, dos quais podemos citar:
 
@@ -26,7 +26,7 @@ Abrange conceitos diversos utilizados em aplicações Back-End, dos quais podemo
 - Autenticação com JSON Web Token (JWT)
 - Desenvolvimento Dirigido a Testes (TDD)
 
-Dentre as ferramentas, pode-se destacar:
+Dentre as ferramentas utrilizadas, podemos destacar:
 
 - Swagger
 - Docker
