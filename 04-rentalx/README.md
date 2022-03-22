@@ -53,13 +53,12 @@ Dentre as ferramentas utrilizadas, podemos destacar:
 ### Cadastro de carro
 
 #### RF
-- [ ] Deve ser possível cadastrar um novo carro.
-- [ ] Deve ser possível listar todas as categorias.
+- [x] Deve ser possível cadastrar um novo carro.
 
 #### RN
-- [ ] Não deve ser possível cadastrar u mcarro com uma placa já existente.
-- [ ] Não deve ser possível alterar a placa de um carro já cadastrado.
-- [ ] O carro deve ser cadastrado, por padrão, como disponível.
+- [x] Não deve ser possível cadastrar um mcarro com uma placa já existente.
+<!-- - [ ] Não deve ser possível alterar a placa de um carro já cadastrado. -->
+- [x] O carro deve ser cadastrado, por padrão, como disponível.
 - [ ] O usuário responsável pelo cadastro deve ser um usuário administrador.
 
 ### Listagem de carros
