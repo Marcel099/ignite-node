@@ -7,6 +7,7 @@ export class InMemoryCarsRepository implements ICarsRepository {
   cars: Car[] = [];
 
   async create({
+    id,
     name,
     description,
     brand,
@@ -27,9 +28,50 @@ export class InMemoryCarsRepository implements ICarsRepository {
       category_id,
     });
 
-    this.cars.push(car);
+    if (id !== undefined) {
+      Object.assign(car, {
+        id,
+      });
+
+      const carIndex = this.cars.findIndex((car) => car.id === id);
+
+      this.cars[carIndex] = car;
+    } else {
+      this.cars.push(car);
+    }
 
     return car;
+  }
+
+  async findAvailable(
+    name?: string,
+    brand?: string,
+    category_id?: string
+  ): Promise<Car[]> {
+    return this.cars
+      .filter((car) => car.available === true)
+      .filter((car) => {
+        if (!name) {
+          return true;
+        }
+        return car.name === name;
+      })
+      .filter((car) => {
+        if (!brand) {
+          return true;
+        }
+        return car.brand === brand;
+      })
+      .filter((car) => {
+        if (!category_id) {
+          return true;
+        }
+        return car.category_id === category_id;
+      });
+  }
+
+  async findById(id: string): Promise<Car> {
+    return this.cars.find((car) => car.id === id);
   }
 
   async findByLicensePlate(license_plate: string): Promise<Car> {
