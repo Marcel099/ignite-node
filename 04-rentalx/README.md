@@ -81,27 +81,28 @@ Dentre as ferramentas utrilizadas, podemos destacar:
 
 #### RN
 - [x] Não deve ser possível cadastrar uma especificação para um carro não cadastrado.
-- [ ] Não deve ser possível cadastrar uma especificação já existente para o mesmo carro.
+- [x] Não deve ser possível cadastrar uma especificação já existente para o mesmo carro.
 
 ### Cadastro de imagens do carro
 
 #### RF
-- [ ] Deve ser possível cadastrar a imagem do carro.
+- [x] Deve ser possível cadastrar a imagem do carro.
 
 #### RNF
-- [ ] Utilizar a biblioteca multer para upload de arquivos.
+- [x] Utilizar a biblioteca multer para upload de arquivos.
 
 #### RN
-- [ ] O usuário deve poder cadastrar mais de uma imagem para o mesmo carro.
+- [x] O usuário deve poder cadastrar mais de uma imagem para o mesmo carro.
 - [x] O usuário responsável pelo cadastro  deve ser um administrador.
 
 ### Aluguel de carro
 
 #### RF
-- [ ] Deve ser possível cadastrar um aluguel.
+- [x] Deve ser possível cadastrar um aluguel.
 
 #### RN
 
-- [ ] O aluguel deve ter duração mínima de 24 horas.
-- [ ] Não deve ser possível cadastrar um novo alguel caso já exista um aberto para o mesmo usuário.
-- [ ] Não deve ser possível cadastrar um novo alguel caso já exista um aberto para o mesmo carro.
+- [x] O aluguel deve ter duração mínima de 24 horas.
+- [x] Não deve ser possível cadastrar um novo alguel caso já exista um aberto para o mesmo usuário.
+- [x] Não deve ser possível cadastrar um novo alguel caso já exista um aberto para o mesmo carro.
+- [x] O usuário deve estar autenticado na aplicação para poder cadastrar um novo aluguel.
