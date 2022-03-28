@@ -93,7 +93,7 @@ Dentre as ferramentas utrilizadas, podemos destacar:
 
 #### RN
 - [x] O usuário deve poder cadastrar mais de uma imagem para o mesmo carro.
-- [x] O usuário responsável pelo cadastro  deve ser um administrador.
+- [x] O usuário responsável pelo cadastro deve ser um administrador.
 
 ### Aluguel de carro
 
@@ -101,8 +101,22 @@ Dentre as ferramentas utrilizadas, podemos destacar:
 - [x] Deve ser possível cadastrar um aluguel.
 
 #### RN
-
 - [x] O aluguel deve ter duração mínima de 24 horas.
 - [x] Não deve ser possível cadastrar um novo alguel caso já exista um aberto para o mesmo usuário.
 - [x] Não deve ser possível cadastrar um novo alguel caso já exista um aberto para o mesmo carro.
 - [x] O usuário deve estar autenticado na aplicação para poder cadastrar um novo aluguel.
+- [ ] Ao realizar um aluguel, o status do carro deverá ser alterado para indisponível.
+
+### Devolução de carro
+
+#### RF
+- [ ] Deve ser possível realizar a devolução de um carro
+
+#### RN
+- [ ] Se o carro for devolvido em menos de 24 horas, deverá ser cobrada diária completa.
+- [ ] Ao realizar a devolução, o carro deverá ser liberado para outro aluguel.
+- [ ] Ao realizar a devolução, o usuário deverá ser liberado para outro aluguel.
+- [ ] Ao realizar a devolução, deverá ser calculado o total do aluguel.
+- [ ] Caso o horário de devolução seja superior ao horário previsto de entrega, deverá ser cobrada multa proporcional aos dias de atraso.
+- [ ] Caso haja multa, deverá ser somado ao total do aluguel.
+- [x] O usuário deve estar autenticado na aplicação para poder devolver um carro.

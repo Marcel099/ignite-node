@@ -3,6 +3,13 @@ import dayjs from "dayjs";
 import { IDateProvider } from "../IDateProvider";
 
 export class DayjsDateProvider implements IDateProvider {
+  compareDatesInDays(startDate: Date, endDate: Date): number {
+    const startDateUtc = this.convertToUTC(startDate);
+    const endDateUtc = this.convertToUTC(endDate);
+
+    return dayjs(endDateUtc).diff(startDateUtc, "days");
+  }
+
   compareDatesInHours(startDate: Date, endDate: Date): number {
     const startDateUtc = this.convertToUTC(startDate);
     const endDateUtc = this.convertToUTC(endDate);
