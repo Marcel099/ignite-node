@@ -5,6 +5,6 @@ import { DayjsDateProvider } from "./DateProvider/implementations/DayjsDateProvi
 
 // eslint-disable-next-line prettier/prettier
 container.registerSingleton<IDateProvider>(
-  "DayjsDateProvider",
+  "DateProvider",
   DayjsDateProvider
 );

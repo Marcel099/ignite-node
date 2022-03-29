@@ -8,6 +8,7 @@ export class CarImage {
       this.id = uuidV4();
     }
   }
+
   @PrimaryColumn()
   id: string;
 
@@ -18,5 +19,5 @@ export class CarImage {
   image_name: string;
 
   @CreateDateColumn()
-  created_at: string;
+  created_at: Date;
 }
