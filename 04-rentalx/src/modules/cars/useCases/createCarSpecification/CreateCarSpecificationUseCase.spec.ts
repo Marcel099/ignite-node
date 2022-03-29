@@ -19,19 +19,16 @@ describe("Create Car Specification", () => {
     );
   });
 
-  it("should be able to add a new specification to the car", async () => {
-    expect(async () => {
-      const car_id = "1234";
-      const specifications_id = ["54321"];
-
+  it("should not be able to add a new specification to a car that doesn't exist", async () => {
+    await expect(
       await createCarSpecificationUseCase.execute({
-        car_id,
-        specifications_id,
-      });
-    }).rejects.toBeInstanceOf(AppError);
+        car_id: "1234",
+        specifications_id: ["54321"],
+      })
+    ).rejects.toEqual(new AppError("Car does not exist"));
   });
 
-  it("should not be able to add a new specification to a car that doesn't exist", async () => {
+  it("should be able to add a new specification to the car", async () => {
     const { id: car_id } = await inMemoryCarsRepository.create({
       name: "Car Name",
       description: "Car Description",

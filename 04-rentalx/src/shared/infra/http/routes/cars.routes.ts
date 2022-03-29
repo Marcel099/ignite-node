@@ -37,7 +37,7 @@ carsRoutes.post(
 carsRoutes.get("/available", listAvailableCarsController.handle);
 
 carsRoutes.post(
-  "/:id/car_images",
+  "/:id/images",
   ensureAuthenticated,
   ensureAdmin,
   upload.array("files"),
