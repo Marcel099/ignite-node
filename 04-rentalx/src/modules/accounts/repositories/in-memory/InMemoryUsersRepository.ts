@@ -7,6 +7,7 @@ export class InMemoryUsersRepository implements IUsersRepository {
   users: User[] = [];
 
   async create({
+    id,
     name,
     email,
     password,
@@ -21,7 +22,13 @@ export class InMemoryUsersRepository implements IUsersRepository {
       driver_license,
     });
 
-    this.users.push(user);
+    if (id !== undefined) {
+      Object.assign(user, {
+        id,
+      });
+    } else {
+      this.users.push(user);
+    }
   }
 
   async findById(id: string): Promise<User> {

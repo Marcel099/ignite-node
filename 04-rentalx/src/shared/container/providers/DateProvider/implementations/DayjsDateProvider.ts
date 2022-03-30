@@ -17,6 +17,10 @@ export class DayjsDateProvider implements IDateProvider {
     return dayjs(endDateUtc).diff(startDateUtc, "hours");
   }
 
+  compareIfDatesAreSequentials(firstDate: Date, secondDate: Date): boolean {
+    return dayjs(firstDate).isBefore(secondDate);
+  }
+
   convertToUTC(date: Date): string {
     return dayjs(date).utc().local().format();
   }
@@ -27,5 +31,9 @@ export class DayjsDateProvider implements IDateProvider {
 
   addDaysToDate(date: Date, days: number): Date {
     return dayjs(date).add(days, "days").toDate();
+  }
+
+  addHoursToDate(date: Date, hours: number): Date {
+    return dayjs(date).add(hours, "hours").toDate();
   }
 }

@@ -128,3 +128,14 @@ Dentre as ferramentas utrilizadas, podemos destacar:
 
 #### RN
 - [x] O usuário deve estar autenticado na aplicação.
+
+### Recuperação de senha
+
+#### RF
+- [x] Deve ser possível que o usuário recupere a senha informando o e-mail.
+- [x] O usuário deve receber um e-mail com o passo-a-passo de recuperação da senha.
+- [x] O usuário deve conseguir inserir uma nova senha.
+
+#### RN
+- [x] O usuário precisa informar uma nova senha.
+- [x] O link enviado para a recuperação deve expirar em 3 horas.
