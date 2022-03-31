@@ -12,8 +12,8 @@ import { User } from "./User";
 
 @Entity("users_token")
 export class UserToken {
-  constructor(id: string) {
-    if (!id) {
+  constructor() {
+    if (!this.id) {
       this.id = uuidV4();
     }
   }
