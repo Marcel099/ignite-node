@@ -49,7 +49,7 @@ export class AuthenticateUserUseCase {
 
     const hasPasswordMatched = await compare(password, user.password);
 
-    if (hasPasswordMatched) {
+    if (!hasPasswordMatched) {
       throw new AppError("Email or password incorrect");
     }
 
