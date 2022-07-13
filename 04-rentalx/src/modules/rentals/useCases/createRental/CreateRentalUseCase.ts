@@ -32,13 +32,13 @@ export class CreateRentalUseCase {
     car_id,
     expected_return_date,
   }: IRequest): Promise<Rental> {
-    const foundCar = this.rentalsRepository.findActiveRentalByCarId(car_id);
+    const foundCar = await this.rentalsRepository.findActiveRentalByCarId(car_id);
 
     if (foundCar) {
       throw new AppError("Car is unavailable");
     }
 
-    const foundUser = this.rentalsRepository.findActiveRentalByUserId(user_id);
+    const foundUser = await this.rentalsRepository.findActiveRentalByUserId(user_id);
 
     if (foundUser) {
       throw new AppError("There's an active rental by this user");

@@ -13,7 +13,7 @@ let dayjsDateProvider: DayjsDateProvider;
 let createRentalUseCase: CreateRentalUseCase;
 
 describe("Create Rental", () => {
-  const OneDayAfterCurrentDate = dayjs().add(1, "day").toDate();
+  const oneDayAfterCurrentDate = dayjs().add(1, "day").toDate();
 
   beforeEach(() => {
     inMemoryRentalsRepository = new InMemoryRentalsRepository();
@@ -41,41 +41,41 @@ describe("Create Rental", () => {
     const rental = await createRentalUseCase.execute({
       user_id: "12345",
       car_id: car.id,
-      expected_return_date: OneDayAfterCurrentDate,
+      expected_return_date: oneDayAfterCurrentDate,
     });
 
     expect(rental).toHaveProperty("id");
-    expect(rental).toHaveProperty("startDate");
+    expect(rental).toHaveProperty("start_date");
   });
 
   it("should not be able to create a new rental if there is another active for the same user", async () => {
-    await createRentalUseCase.execute({
+    await inMemoryRentalsRepository.create({
       user_id: "12345",
       car_id: "121212",
-      expected_return_date: OneDayAfterCurrentDate,
+      expected_return_date: oneDayAfterCurrentDate,
     });
 
     await expect(
       createRentalUseCase.execute({
         user_id: "12345",
         car_id: "131313",
-        expected_return_date: OneDayAfterCurrentDate,
+        expected_return_date: oneDayAfterCurrentDate,
       })
     ).rejects.toEqual(new AppError("There's an active rental by this user"));
   });
 
   it("should not be able to create a new rental if there is another active for the same car", async () => {
-    await createRentalUseCase.execute({
+    await inMemoryRentalsRepository.create({
       user_id: "12345",
       car_id: "121212",
-      expected_return_date: OneDayAfterCurrentDate,
+      expected_return_date: oneDayAfterCurrentDate,
     });
 
     await expect(
       createRentalUseCase.execute({
         user_id: "54321",
         car_id: "121212",
-        expected_return_date: OneDayAfterCurrentDate,
+        expected_return_date: oneDayAfterCurrentDate,
       })
     ).rejects.toEqual(new AppError("Car is unavailable"));
   });
