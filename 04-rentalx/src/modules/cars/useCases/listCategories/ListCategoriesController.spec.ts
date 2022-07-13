@@ -8,6 +8,8 @@ import { app } from "@shared/infra/http/app";
 import createConnection from "@shared/infra/typeorm";
 
 let connection: Connection;
+let token: string;
+
 describe("Create Category Controller", () => {
   beforeAll(async () => {
     connection = await createConnection("localhost");
@@ -21,6 +23,13 @@ describe("Create Category Controller", () => {
       VALUES('${id}', 'admin', 'admin@rentalx.com.br', '${password}', true, now(), 'XXX-1234')
       `
     );
+
+    const responseToken = await request(app).post("/sessions").send({
+      email: "admin@rentalx.com.br",
+      password: "admin",
+    });
+
+    token = responseToken.body.token;
   });
 
   afterAll(async () => {
@@ -29,13 +38,6 @@ describe("Create Category Controller", () => {
   });
 
   it("should not be able to list all categories", async () => {
-    const responseToken = await request(app).post("/sessions").send({
-      email: "admin@rentalx.com.br",
-      password: "admin",
-    });
-
-    const { refresh_token } = responseToken.body;
-
     await request(app)
       .post("/categories")
       .send({
@@ -43,7 +45,7 @@ describe("Create Category Controller", () => {
         description: "Description Supertest",
       })
       .set({
-        Authorization: `Bearer ${refresh_token}`,
+        Authorization: `Bearer ${token}`,
       });
 
     const response = await request(app).get("/categories");
