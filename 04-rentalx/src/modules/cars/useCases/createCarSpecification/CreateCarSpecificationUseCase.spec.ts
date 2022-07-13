@@ -21,7 +21,7 @@ describe("Create Car Specification", () => {
 
   it("should not be able to add a new specification to a car that doesn't exist", async () => {
     await expect(
-      await createCarSpecificationUseCase.execute({
+      createCarSpecificationUseCase.execute({
         car_id: "1234",
         specifications_id: ["54321"],
       })
