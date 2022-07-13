@@ -8,28 +8,30 @@ import { IEmailProvider } from "../IEmailProvider";
 @injectable()
 export class EtherealEmailProvider implements IEmailProvider {
   constructor() {
-    nodemailer
-      .createTestAccount()
-      .then((account) => {
-        const {
-          user,
-          pass,
-          smtp: { host, port, secure },
-        } = account;
-
-        const transporter = nodemailer.createTransport({
-          host,
-          port,
-          secure,
-          auth: {
+    if (process.env.NODE_ENV !== "test") {
+      nodemailer
+        .createTestAccount()
+        .then((account) => {
+          const {
             user,
             pass,
-          },
-        });
+            smtp: { host, port, secure },
+          } = account;
 
-        this.client = transporter;
-      })
-      .catch((err) => console.error(err));
+          const transporter = nodemailer.createTransport({
+            host,
+            port,
+            secure,
+            auth: {
+              user,
+              pass,
+            },
+          });
+
+          this.client = transporter;
+        })
+        .catch((err) => console.error(err));
+    }
   }
 
   private client: Transporter;

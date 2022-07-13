@@ -10,7 +10,7 @@ import { v4 as uuidV4 } from "uuid";
 
 import { User } from "./User";
 
-@Entity("users_token")
+@Entity("user_tokens")
 export class UserToken {
   constructor() {
     if (!this.id) {
