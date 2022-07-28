@@ -1,3 +1,4 @@
+import "reflect-metadata";
 import express from "express";
 import path from "path";
 import { createServer } from "http";
@@ -16,11 +17,5 @@ io.on("connection", (socket) => {
 });
 
 app.use(express.static(path.join(__dirname, '..', 'public')));
-
-app.get("/", (req, res) => {
-  return res.json({
-    message: "Hello Websocket",
-  })
-})
 
 export { server, io };
