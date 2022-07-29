@@ -40,6 +40,10 @@ function onLoad() {
   });
 
   socket.on("message", (data) => {
+    //todo Esse if nem deveria ser necessário, pois 
+    //todo um usuário que não é o destinatário também receber a mensagem
+    //todo configura violação de privacidade
+    //todo Parece que o problema está no broadcast em grupo
     if (data.message.roomId === idChatRoom) {
       addMessage(data);
     }
@@ -71,8 +75,8 @@ function addMessage(data) {
       <strong> ${data.user.name} &nbsp; </strong>
       <span>  ${dayjs(data.message.created_at).format(
         "DD/MM/YYYY HH:mm"
-      )} </span></span
-    >
+      )} </span>
+    </span>
     <div class="messages">
       <span class="chat_message"> ${data.message.text}</span>
     </div>
