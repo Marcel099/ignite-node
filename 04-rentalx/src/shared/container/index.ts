@@ -35,7 +35,7 @@ container.registerSingleton<ICategoriesRepository>(
 );
 
 container.registerSingleton<IRentalsRepository>(
-  "RentalRepository",
+  "RentalsRepository",
   InMemoryRentalsRepository
 );
 
