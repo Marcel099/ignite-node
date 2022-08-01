@@ -1,22 +1,27 @@
 import { inject, injectable } from "tsyringe";
 
 import { ICarImagesRepository } from "@modules/cars/repositories/ICarImagesRepository";
+import { IStorageProvider } from "@shared/container/providers/Storage/IStorageProvider";
 
 interface IRequest {
   car_id: string;
-  images_name: string[];
+  carImageFiles: string[];
 }
 
 @injectable()
 export class UploadCarImagesUseCase {
   constructor(
     @inject("CarImagesRepository")
-    private carImagesRepository: ICarImagesRepository
+    private carImagesRepository: ICarImagesRepository,
+    @inject("StorageProvider")
+    private storageProvider: IStorageProvider
   ) {}
 
-  async execute({ car_id, images_name }: IRequest): Promise<void> {
-    images_name.map(async (image_name) => {
-      await this.carImagesRepository.create(car_id, image_name);
+  async execute({ car_id, carImageFiles }: IRequest): Promise<void> {
+    carImageFiles.forEach(async (carImageFile) => {
+      await this.storageProvider.save(carImageFile, "cars");
+
+      await this.carImagesRepository.create(car_id, carImageFile);
     });
   }
 }
