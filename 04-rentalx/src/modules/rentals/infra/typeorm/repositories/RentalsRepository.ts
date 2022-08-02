@@ -3,7 +3,7 @@ import { getRepository, Repository } from "typeorm";
 import { ICreateRentalDTO } from "@modules/rentals/dtos/ICreateRentalDTO";
 import { IRentalsRepository } from "@modules/rentals/repositories/IRentalsRepository";
 
-import { Rental } from "../entities/rental";
+import { Rental } from "../entities/Rental";
 
 export class RentalsRepository implements IRentalsRepository {
   constructor() {
@@ -56,7 +56,6 @@ export class RentalsRepository implements IRentalsRepository {
   async listRentalsByUserId(user_id: string): Promise<Rental[]> {
     const rentals = await this.repository.find({
       where: { user_id },
-      relations: ["car"],
     });
     return rentals;
   }

@@ -13,7 +13,7 @@ import { ICarImagesRepository } from "@modules/cars/repositories/ICarImagesRepos
 import { ICarsRepository } from "@modules/cars/repositories/ICarsRepository";
 import { ICategoriesRepository } from "@modules/cars/repositories/ICategoriesRepository";
 import { ISpecificationsRepository } from "@modules/cars/repositories/ISpecificationsRepository";
-import { InMemoryRentalsRepository } from "@modules/rentals/repositories/in-memory/InMemoryRentalsRepository";
+import { RentalsRepository } from "@modules/rentals/infra/typeorm/repositories/RentalsRepository";
 import { IRentalsRepository } from "@modules/rentals/repositories/IRentalsRepository";
 
 // eslint-disable-next-line prettier/prettier
@@ -34,7 +34,7 @@ container.registerSingleton<ICategoriesRepository>(
 
 container.registerSingleton<IRentalsRepository>(
   "RentalsRepository",
-  InMemoryRentalsRepository
+  RentalsRepository
 );
 
 container.registerSingleton<ISpecificationsRepository>(

@@ -1,8 +1,16 @@
-import { Car } from "@modules/cars/infra/typeorm/entities/Car";
-import { Column, CreateDateColumn, Entity, JoinColumn, ManyToOne, PrimaryColumn } from "typeorm";
+import {
+  Column,
+  CreateDateColumn,
+  Entity,
+  JoinColumn,
+  ManyToOne,
+  PrimaryColumn,
+} from "typeorm";
 import { v4 as uuidV4 } from "uuid";
 
-@Entity()
+import { Car } from "@modules/cars/infra/typeorm/entities/Car";
+
+@Entity("rentals")
 export class Rental {
   constructor() {
     if (!this.id) {

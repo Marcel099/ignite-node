@@ -1,7 +1,7 @@
 import { inject, injectable } from "tsyringe";
 
 import { ICarsRepository } from "@modules/cars/repositories/ICarsRepository";
-import { Rental } from "@modules/rentals/infra/typeorm/entities/rental";
+import { Rental } from "@modules/rentals/infra/typeorm/entities/Rental";
 import { IRentalsRepository } from "@modules/rentals/repositories/IRentalsRepository";
 import { IDateProvider } from "@shared/container/providers/DateProvider/IDateProvider";
 import { AppError } from "@shared/errors/AppError";
@@ -23,11 +23,16 @@ export class RentalCarReturnUseCase {
   ) {}
   async execute({ id, user_id }: IRequest): Promise<Rental> {
     const rental = await this.rentalsRepository.findById(id);
-    const car = await this.carsRepository.findById(rental.car_id);
 
-    if (!rental) {
+    if (!rental || rental.user_id !== user_id) {
       throw new AppError("Rental does not exist");
     }
+
+    if (rental.end_date) {
+      throw new AppError("Rental has already been returned");
+    }
+
+    const car = await this.carsRepository.findById(rental.car_id);
 
     const minimunDuration = 1;
 

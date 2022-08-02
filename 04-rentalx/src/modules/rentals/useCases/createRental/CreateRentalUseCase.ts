@@ -3,7 +3,7 @@ import utc from "dayjs/plugin/utc";
 import { inject, injectable } from "tsyringe";
 
 import { ICarsRepository } from "@modules/cars/repositories/ICarsRepository";
-import { Rental } from "@modules/rentals/infra/typeorm/entities/rental";
+import { Rental } from "@modules/rentals/infra/typeorm/entities/Rental";
 import { IRentalsRepository } from "@modules/rentals/repositories/IRentalsRepository";
 import { IDateProvider } from "@shared/container/providers/DateProvider/IDateProvider";
 import { AppError } from "@shared/errors/AppError";
@@ -35,14 +35,14 @@ export class CreateRentalUseCase {
     const foundCar = await this.carsRepository.findById(car_id);
 
     if (!foundCar) {
-      throw new AppError("Car doesn't exist");
+      throw new AppError("Car does not exist");
     }
 
     const foundRentedCar = await this.rentalsRepository.findActiveRentalByCarId(
       car_id
     );
 
-    if (foundRentedCar) {
+    if (foundRentedCar && foundRentedCar.user_id !== user_id) {
       throw new AppError("Car is unavailable");
     }
 
