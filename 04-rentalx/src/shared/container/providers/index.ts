@@ -6,6 +6,7 @@ import { DayjsDateProvider } from "./DateProvider/implementations/DayjsDateProvi
 import { IEmailProvider } from "./EmailProvider/IEmailProvider";
 import { EtherealEmailProvider } from "./EmailProvider/implementations/EtherealEmailProvider";
 import { LocalStorageProvider } from "./Storage/implementations/LocalStorageProvider";
+import { S3StorageProvider } from "./Storage/implementations/S3StorageProvider";
 import { IStorageProvider } from "./Storage/IStorageProvider";
 
 // eslint-disable-next-line prettier/prettier
@@ -19,7 +20,12 @@ container.registerInstance<IEmailProvider>(
   new EtherealEmailProvider()
 );
 
+const DiskStorage = {
+  local: LocalStorageProvider,
+  s3: S3StorageProvider,
+};
+
 container.registerSingleton<IStorageProvider>(
   "StorageProvider",
-  LocalStorageProvider
+  DiskStorage[process.env.DISK]
 );

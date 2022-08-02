@@ -20,7 +20,6 @@ export class UploadCarImagesUseCase {
   async execute({ car_id, carImageFiles }: IRequest): Promise<void> {
     carImageFiles.forEach(async (carImageFile) => {
       await this.storageProvider.save(carImageFile, "cars");
-
       await this.carImagesRepository.create(car_id, carImageFile);
     });
   }
