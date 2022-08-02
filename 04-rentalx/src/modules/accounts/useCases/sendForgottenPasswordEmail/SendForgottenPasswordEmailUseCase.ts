@@ -43,7 +43,7 @@ export class SendForgottenPasswordEmailUseCase {
       "..",
       "views",
       "emails",
-      "forgotPassword.hbs"
+      "forgottenPassword.hbs"
     );
 
     const variables = {

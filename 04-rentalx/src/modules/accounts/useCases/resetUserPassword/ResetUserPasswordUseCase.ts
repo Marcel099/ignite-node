@@ -31,8 +31,8 @@ export class ResetUserPasswordUseCase {
 
     if (
       this.dateProvider.compareIfDatesAreSequentials(
-        userToken.expiration_date,
-        this.dateProvider.getCurrentDate()
+        this.dateProvider.getCurrentDate(),
+        userToken.expiration_date
       ) === false
     ) {
       throw new AppError("Token expired");
