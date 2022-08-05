@@ -1,4 +1,5 @@
 import "dotenv/config";
+import "reflect-metadata";
 import express from "express";
 import "express-async-errors";
 import swaggerUi from "swagger-ui-express";
@@ -19,8 +20,10 @@ app.use(express.json());
 
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerFile));
 
-app.use("/avatar", express.static(`/${uploadConfig.tmpFolder}/avatar`));
-app.use("/cars", express.static(`/${uploadConfig.tmpFolder}/cars`));
+if (process.env.DISK === "local") {
+  app.use("/avatar", express.static(`/${uploadConfig.tmpFolder}/avatar`));
+  app.use("/cars", express.static(`/${uploadConfig.tmpFolder}/cars`));
+}
 
 app.use(router);
 
