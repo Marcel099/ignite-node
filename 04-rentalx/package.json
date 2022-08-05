@@ -27,6 +27,8 @@
     "multer": "^1.4.4",
     "nodemailer": "^6.7.3",
     "pg": "^8.7.3",
+    "rate-limiter-flexible": "^2.3.8",
+    "redis": "^4.2.0",
     "reflect-metadata": "^0.1.13",
     "swagger-ui-express": "^4.3.0",
     "tsyringe": "^4.6.0",
