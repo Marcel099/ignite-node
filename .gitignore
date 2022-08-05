@@ -22,3 +22,4 @@ yarn-error.log*
 
 # database
 ormconfig.json
+docker-compose.yml
