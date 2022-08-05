@@ -1,5 +1,6 @@
 import "dotenv/config";
 import "reflect-metadata";
+import cors from "cors";
 import express from "express";
 import "express-async-errors";
 import swaggerUi from "swagger-ui-express";
@@ -24,6 +25,8 @@ if (process.env.DISK === "local") {
   app.use("/avatar", express.static(`/${uploadConfig.tmpFolder}/avatar`));
   app.use("/cars", express.static(`/${uploadConfig.tmpFolder}/cars`));
 }
+
+app.use(cors());
 
 app.use(router);
 
